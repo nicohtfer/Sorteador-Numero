@@ -12,8 +12,10 @@ function sortear() {
             numero = numeroAleatorio(doNumero, ateNumero);
         }
         sorteados.push(numero);
+
+        habilitarBotao();
     }
-    
+
     let palavraSorteado = quantidadeNumero > 1 ? "sorteados" : "sorteado";
     let palavraNumero = quantidadeNumero > 1 ? "Numeros" : "Numero";
     let resultado = document.getElementById("resultado");
@@ -22,4 +24,10 @@ function sortear() {
 
 function numeroAleatorio(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+function habilitarBotao() {
+    let btnReiniciar = document.getElementById("btn-reiniciar");
+    btnReiniciar.classList.remove("container__botao-desabilitado");
+    btnReiniciar.classList.add("container__botao");
 }
