@@ -8,16 +8,18 @@ function sortear() {
 
     for (let i = 0; i < quantidadeNumero; i++) {
         numero = numeroAleatorio(doNumero, ateNumero);
+        while (sorteados.includes(numero)) {
+            numero = numeroAleatorio(doNumero, ateNumero);
+        }
         sorteados.push(numero);
     }
-    alterarTexto("resultado", `Números sorteados: ${sorteados}`);
+    
+    let palavraSorteado = quantidadeNumero > 1 ? "sorteados" : "sorteado";
+    let palavraNumero = quantidadeNumero > 1 ? "Numeros" : "Numero";
+    let resultado = document.getElementById("resultado");
+    resultado.innerHTML = `<label class="texto__paragrafo">${palavraNumero} ${palavraSorteado}:  ${sorteados}</label>`;
 }
 
 function numeroAleatorio(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
-}
-
-function alterarTexto(id, texto) {
-    let campo = document.getElementById(id);
-    campo.innerHTML = texto;
 }
