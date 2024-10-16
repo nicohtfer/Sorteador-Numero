@@ -3,10 +3,20 @@ function sortear() {
     let doNumero = parseInt(document.getElementById("de").value);
     let ateNumero = parseInt(document.getElementById("ate").value);
     
+    if (doNumero > ateNumero) {
+        alert("O número do campo 'Do número' precisa ser menor que o número do campo 'Até o número'");
+        return;
+    }
+
     let sorteados = [];
     let numero;
-
-    //for para nao repetir numeros sorteados
+    
+    let subNumero = ateNumero - doNumero;
+    if (subNumero < quantidadeNumero) {
+        alert("A quantidade inserida é maior do que os números possiveis");
+        return;
+    }
+    //for para não repetir numeros sorteados
     for (let i = 0; i < quantidadeNumero; i++) {
         numero = numeroAleatorio(doNumero, ateNumero);
         while (sorteados.includes(numero)) {
