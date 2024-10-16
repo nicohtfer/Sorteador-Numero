@@ -5,7 +5,8 @@ function sortear() {
     
     let sorteados = [];
     let numero;
-//for para nao repetir numeros sorteados
+
+    //for para nao repetir numeros sorteados
     for (let i = 0; i < quantidadeNumero; i++) {
         numero = numeroAleatorio(doNumero, ateNumero);
         while (sorteados.includes(numero)) {
@@ -22,12 +23,26 @@ function sortear() {
     resultado.innerHTML = `<label class="texto__paragrafo">${palavraNumero} ${palavraSorteado}:  ${sorteados}</label>`;
 }
 
+function reiniciar() {
+    document.getElementById("quantidade").value = "";
+    document.getElementById("de").value = "";
+    document.getElementById("ate").value = "";
+    let resultado = document.getElementById("resultado");
+    resultado.innerHTML = `<label class="texto__paragrafo">Números sorteados:  nenhum até agora</label>`
+    habilitarBotao()
+}
+
 function numeroAleatorio(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 function habilitarBotao() {
     let btnReiniciar = document.getElementById("btn-reiniciar");
-    btnReiniciar.classList.remove("container__botao-desabilitado");
-    btnReiniciar.classList.add("container__botao");
+    if (btnReiniciar.classList.contains("container__botao-desabilitado")) {
+        btnReiniciar.classList.remove("container__botao-desabilitado");
+        btnReiniciar.classList.add("container__botao");
+    } else {
+    btnReiniciar.classList.remove("container__botao");
+    btnReiniciar.classList.add("container__botao-desabilitado");
+    }
 }
