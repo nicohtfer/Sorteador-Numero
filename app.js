@@ -5,7 +5,7 @@ function sortear() {
     
     let sorteados = [];
     let numero;
-
+//for para nao repetir numeros sorteados
     for (let i = 0; i < quantidadeNumero; i++) {
         numero = numeroAleatorio(doNumero, ateNumero);
         while (sorteados.includes(numero)) {
